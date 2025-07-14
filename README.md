@@ -119,18 +119,18 @@ MongoDB
 
 ## 🛠️ Setup Instructions
 
-# Clone the repo
+Clone the repo
 git clone <repo-url>
 cd chatbot_project
 
-# Create and activate virtual environment
+Create and activate virtual environment
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 
-# Install dependencies
+Install dependencies
 pip install -r requirements.txt
 
-# Train the model
+Train the model
 rasa train
 
 # Start the action server (for custom scraping logic)
