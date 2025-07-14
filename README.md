@@ -112,9 +112,9 @@ Pizza_Ordering_Chatbot/
 
 ## 🔧 Requirements
 
-Python 3.8+
-Rasa 3.x
-pymongo
+Python 3.8+, 
+Rasa 3.x, 
+pymongo, 
 MongoDB
 
 ---
