@@ -1,0 +1,158 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - order_pizza:
+      use_entities:
+        - pizza
+        - size
+        - crust
+      ignore_entities:
+        - PERSON
+        - address
+        - phone-number
+        - email
+  - register
+  - affirm 
+  - reject
+
+entities:
+  - pizza
+  - size
+  - crust
+  # - name
+  - PERSON
+  - address
+  - phone-number
+  - email
+
+slots:
+  pizza:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: pizza
+
+  size:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: size
+
+  crust:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: crust
+
+  price:
+    type: bool
+    influence_conversation: true
+    mappings:
+      - type: custom
+
+  # name:
+  #   type: text
+  #   influence_conversation: true
+  #   mappings:
+  #     - type: from_entity
+  #       entity: name
+
+  PERSON:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: PERSON
+
+  address:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: address
+
+  phone-number:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: phone-number
+
+  email:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: email
+
+  # order_summary:
+  #   type: bool
+  #   influence_conversation: true
+  #   mappings:
+  #     - type: custom
+
+forms:
+  pizza_order_form:
+    required_slots:
+      - pizza
+      - crust
+      - size
+      - price
+  register_form:
+    required_slots:
+      # - name
+      - PERSON
+      - address
+      - phone-number
+      - email
+
+responses:
+  utter_greet:
+    - text: "Hello! Welcome to Dominos.I am a pizza ordering chatbot. How can I help you today?"
+      buttons:
+      - title: "order"
+        payload: "/order_pizza"
+      - title: "disagree"
+        payload: "/term_disagree"
+
+  utter_goodbye:
+    - text: "Goodbye! Have a nice day!"
+
+  utter_search_more:
+    - text: "Sure, I can help you search some other pizza too."
+
+  utter_place_order:
+    - text: "Would you like to place order of this pizza"
+
+  utter_other:
+    - text: "Would you like to order again, cancel your order, or track your order? Just let me know by writting it in the text box!"
+
+  # utter_ask_name:
+  #   - text: "May I have your name, please?"
+
+  utter_ask_PERSON:
+    - text: "May I have your name, please?"
+
+  utter_ask_address:
+    - text: "Kindly enter your permanent adress"
+
+  utter_ask_phone-number:
+    - text: "What is your phone number?"
+
+  utter_ask_email:
+    - text: "What is your e-mail?"
+
+  utter_out_of_scope:
+  - text: Sorry, I can't handle that request.
+
+actions:
+  - action_ask_pizza
+  - action_ask_crust
+  - action_ask_size
+  - action_ask_price
+  - action_register

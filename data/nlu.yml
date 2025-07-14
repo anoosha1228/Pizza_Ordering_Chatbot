@@ -1,0 +1,218 @@
+version: "3.1"
+
+nlu:
+  - regex: phone-number
+    examples: |
+      - \b03\d{9}\b
+
+  - regex: email
+    examples: |
+      - \b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b
+
+  - intent: out_of_scope
+    examples: |
+      - I want to order food
+      - i want burger
+      - i want nachos
+      - i want drinks
+      - i want chips
+      - i want fries
+      - What is 2 + 2?
+      - Who's the US President?
+
+  - intent: greet
+    examples: |
+      - hi
+
+  - intent: goodbye
+    examples: |
+      - bye
+      - goodbye
+      - see you later
+      - take care
+
+  - intent: affirm
+    examples: |
+      - yes
+      
+  - intent: reject
+    examples: |
+      - no
+
+  - intent: order_pizza
+    examples: |
+      - i want [pizza](type)
+      - [pizza](type)
+      - i want to place order
+      - i want a [small](size) [deluxe feast](pizza) with [brooklyn style](crust) crust
+      - order an [extra large](size) [wisconsin 6 cheese](pizza) with [handmade pan](crust) crust
+      - get me a [medium](size) [philly cheese steak](pizza) with [thin crust](crust) crust
+      - get me a [medium](size) [meatzza feast](pizza) with [thin crust](crust) crust
+      - i'd like to have a [large](size) [cali chicken bacon ranch](pizza) with [hand tossed](crust) crust
+      - i want a [small](size) [cali chicken bacon ranch](pizza) with [brooklyn style](crust) crust
+      - can you order an [extra large](size) [extravaganzza feast](pizza) with [gluten free crust](crust)?
+      - i want a [small](size) [memphis bbq chicken](pizza) with [hand tossed](crust) crust
+      - order a [medium](size) [fiery hawaiian](pizza) with [thin crust](crust) crust
+      - please get me a [large](size) [pacific veggie](pizza) with [brooklyn style](crust) crust
+      - please get me a [large](size) [wisconsin 6 cheese](pizza) with [brooklyn style](crust) crust
+      - i'd like an [extra large](size) [bacon cheeseburger feast](pizza) with [handmade pan](crust) crust
+      - i want to place an order for a [medium](size) [spinach & feta](pizza) with [hand tossed](crust) crust
+      - can i get a [small](size) [ultimate pepperoni feast](pizza) with [brooklyn style](crust)?
+      - i want to order an [extra large](size) [deluxe feast](pizza) with [thin crust](crust)
+      - get me a [medium](size) [honolulu hawaiian](pizza) with [hand tossed](crust) crust
+      - i'd like a [large](size) [meatzza feast](pizza) with [handmade pan](crust) crust
+      - can you get me an [extra large](size) [buffalo chicken](pizza) with [gluten free crust](crust)?
+      - order a [small](size) [america's favorite feast](pizza) with [thin crust](crust)
+      - can you get me an [large](size) [meatzza feast](pizza) with [gluten free crust](crust)?
+      - order a [small](size) [cali chicken bacon ranch](pizza) with [thin crust](crust)
+      - i want a [large](size) pizza
+      - i want [cheese pizza](pizza)
+      - i would like [thin crust](crust)
+
+  - intent: register
+    examples: |
+      - Place order
+      - Add to cart
+      - My name is [John Doe](PERSON)
+      - My number is [03214567890](phone-number)
+      - I live at [123 Main Street](address)
+      - My address is [123 Main Street, Anytown(address)]
+      - You can reach me at [03214567890](phone-number)
+      - My full name is [Jane Smith](PERSON)
+      - My phone number is [03214567890](phone-number)
+      - I reside at [456 Elm Street](address)
+      - The delivery address is [789 Pine Avenue](address)
+      - Here are my details: [John Doe](PERSON), [123 Elm St](address), [03211234567](phone-number), [john.doe@example.com](email)
+      - You can email me at [jane.smith@example.org](email)
+      - My number is [03214356789](phone-number)
+      - Please call me at [03123456789](phone-number)
+      - Please call me at [03123456789](phone-number)
+      - Reach out to me on [03098765432](phone-number)
+      - You can contact me at [03111234567](phone-number)
+      - My contact number is [03222334455](phone-number)
+      - Dial [03123456789](phone-number) for support
+      - Call [03012345678](phone-number) for inquiries
+      - The number to call is [03223334455](phone-number)
+      - You can reach me at [03099887766](phone-number)
+      - Here is my phone number [03133445566](phone-number)
+      - My email is [example@example.com](email)
+      - Please send an email to [test.email123@test.co.uk](email)
+      - Contact me at [firstname.lastname@domain.com](email)
+      - You can reach me via email at [user+mailbox@sub.domain.org](email)
+      - Here is my email address: [valid_123.email@example-domain.com](email)
+      - Send mail to [info@company.com](email)
+      - You can use [support@service.io](email) to contact
+      - My secondary email is [john_doe123@example.org](email)
+      - email is [contact@web.site](email)
+      - [biz.contact@enterprise.biz](email)
+      - [23-A Main Gulberg, Lahore, Pakistan](address)
+      - [14-C Model Town, Lahore, Pakistan](address)
+
+  - lookup: pizza
+    examples: |
+      - wisconsin 6 cheese
+      - extravaganzza feast
+      - spinach & feta
+      - cheese pizza
+      - pacific veggie
+      - bacon cheeseburger feast
+      - buffalo chicken
+      - memphis bbq chicken
+      - deluxe feast
+      - cali chicken bacon ranch
+      - america's favorite feast
+      - honolulu hawaiian
+      - fiery hawaiian
+      - meatzza feast
+      - ultimate pepperoni feast
+      - philly cheese steak
+
+  - lookup: crust
+    examples: |
+      - brooklyn style
+      - handmade pan
+      - thin crust
+      - hand tossed
+      - gluten free crust
+
+  - lookup: size
+    examples: |
+      - small
+      - medium
+      - large
+      - extra large
+
+  - lookup: PERSON
+    examples: |
+      - abbad
+      - abbas
+      - abd
+      - al-uzza
+      - abdus
+      - salam
+      - manaf
+      - rabbo
+      - abdel
+      - fattah
+      - nour
+      - abdi
+      - abdolreza
+      - abdu
+      - abdul
+      - ahad
+      - ali
+      - alim
+      - azim
+      - al-aziz
+      - baqi
+      - bari
+      - basir
+      - basit
+      - ghaffar
+      - ghani
+      - hadi
+      - hafiz
+      - hai
+      - hakim
+      - halim
+      - hamid
+      - haq
+  
+  - lookup: phone-number
+    examples: |
+      - 03214567891
+      - 03214567890
+      - 03214567890
+
+  - lookup: email
+    examples: |
+      - jane.smith@example.org
+      - anoosha.1@ibex.com
+
+  # - lookup: address
+  #   examples: |
+  #     - 23-A Main Gulberg, Lahore, Pakistan
+  #     - 14-C Model Town, Lahore, Pakistan
+  #     - 5-G Johar Town, Lahore, Pakistan
+  #     - 102-D DHA Phase 5, Lahore, Pakistan
+  #     - 7-H Faisal Town, Lahore, Pakistan
+  #     - 45-B Garden Town, Lahore, Pakistan
+  #     - 9-E Township, Lahore, Pakistan
+  #     - 30-F Bahria Town, Lahore, Pakistan
+  #     - 17-C Raiwind Road, Lahore, Pakistan
+  #     - 2-G Canal View, Lahore, Pakistan
+  #     - 11-A Iqbal Town, Lahore, Pakistan
+  #     - 6-H Shadman, Lahore, Pakistan
+  #     - 22-D Gulshan-e-Ravi, Lahore, Pakistan
+  #     - 8-F M.M Alam Road, Lahore, Pakistan
+  #     - 3-B Cavalry Ground, Lahore, Pakistan
+  #     - 19-C Lahore Cantt, Lahore, Pakistan
+  #     - 4-G Allama Iqbal Town, Lahore, Pakistan
+  #     - 13-H Sabzazar, Lahore, Pakistan
+  #     - 27-A Gulberg III, Lahore, Pakistan
+  #     - 10-E Model Colony, Lahore, Pakistan
+
+
+
+
+ 

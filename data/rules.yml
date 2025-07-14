@@ -1,0 +1,64 @@
+version: "3.1"
+
+rules:
+  - rule: Activate pizza ordering form
+    steps:
+      - intent: order_pizza
+      - action: pizza_order_form
+      - active_loop: pizza_order_form
+
+  - rule: Submit pizza ordering form
+    condition:
+      - active_loop: pizza_order_form
+    steps:
+      - action: pizza_order_form
+      - active_loop: null
+      - action: utter_place_order
+
+  - rule: Activate register form
+    steps:
+      - intent: affirm
+      - action: register_form
+      - active_loop: register_form
+
+  - rule: Submit register form
+    condition:
+      - active_loop: register_form
+    steps:
+      - action: register_form
+      - active_loop: null
+      - action: action_register
+      - action: utter_other
+      - action: action_restart
+
+  - rule: Activate register form
+    steps:
+      - intent: reject
+      - action: utter_search_more
+      - action: action_restart
+
+  # - rule: Confirm order
+  #   condition:
+  #   - slot_was_set:
+  #     - order_summary: true
+  #   steps:
+  #   - action: utter_confirm_order
+  #   - intent: affirm
+  #   - action: action_restart
+
+  - rule: Greet
+    steps:
+      - intent: greet
+      - action: utter_greet
+
+  - rule: Goodbye
+    steps:
+      - intent: goodbye
+      - action: utter_goodbye
+
+  - rule: out-of-scope
+    steps:
+    - intent: out_of_scope
+    - action: utter_out_of_scope
+
+

@@ -1,0 +1,32 @@
+recipe: default.v1
+assistant_id: example_bot
+language: en
+
+pipeline:
+- name: SpacyNLP
+  model: en_core_web_md
+  case_sensitive: False
+- name: SpacyTokenizer
+- name: RegexFeaturizer
+- name: SpacyFeaturizer
+  pooling: mean
+- name: CountVectorsFeaturizer
+  analyzer: char_wb
+  min_ngram: 1
+  max_ngram: 4
+- name: DIETClassifier
+  epochs: 50
+  constrain_similarities: true
+  entity_recognition: True
+- name: SpacyEntityExtractor
+  dimensions: ["PERSON"]
+
+policies:
+- name: MemoizationPolicy
+- name: RulePolicy
+  core_fallback_threshold: 0.4
+  core_fallback_action_name: action_default_fallback
+  enable_fallback_prediction: true
+
+
+
