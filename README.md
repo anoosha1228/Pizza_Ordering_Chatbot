@@ -135,8 +135,8 @@ pip install -r requirements.txt
 Train the model
 rasa train
 
-# Start the action server (for custom scraping logic)
+Start the action server (for custom scraping logic)
 rasa run actions
 
-# Start the chatbot
+Start the chatbot
 rasa shell
