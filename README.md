@@ -74,7 +74,7 @@ Try the following queries when interacting with the chatbot:
 ---
 
 ## 📁 Project Structure
-
+'''
 Pizza_Ordering_Chatbot/
 ├── actions/
 │   └── actions.py            # Custom scraping & filtering logic
@@ -87,7 +87,7 @@ Pizza_Ordering_Chatbot/
 ├── endpoints.yml             # Action server and MongoDB configs
 ├── README.md                 # Project documentation
 └── requirements.txt          # Python dependencies
-
+'''
 ---
 
 ## 📌 Features
